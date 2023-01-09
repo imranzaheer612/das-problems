@@ -1,8 +1,19 @@
 
 class Solution:
     
+    #best
+    def removeDuplicates(self, nums):
+        l = 1
+
+        for r in range(1, len(nums)):
+            if (nums[r] != nums[r-1]):
+                nums[l] = nums[r]
+                l += 1
+        
+        return l
+
     # working sol
-    def removeDuplicates(self, nums) -> int:
+    def removeDuplicates_1(self, nums) -> int:
         if len(nums)==1:
             return 1
         
@@ -18,7 +29,7 @@ class Solution:
         return i+1
 
     # pending
-    def removeDuplicates_OLD(self, nums) -> int:
+    def removeDuplicates_2(self, nums) -> int:
 
         if len(nums)==1:
             return 1
