@@ -7,6 +7,7 @@ class Solution:
         while l <= r:
             mid  = (l + r) // 2
             
+            # if target is mid
             if target == nums[mid]:
                 return mid
             
