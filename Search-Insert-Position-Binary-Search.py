@@ -25,3 +25,4 @@ class Solution:
 test_list = [1,3,5,6]
 sol = Solution();
 print(sol.searchInsert(test_list, 7))
+print(sol.searchInsert(test_list, 5))
