@@ -1,11 +1,10 @@
 class Solution:
 
     """
-    Complexity : O(n^2)
+    Time : O(n)
     """
-    def containsDuplicate(self, nums: list[int]) -> bool:
+    def withbruteForce(self, nums: list[int]) -> bool:
         
-        # Brute force
         for i in range(len(nums)):
             for j in range(i + 1, len(nums)):
                 print((i, j), end="")
@@ -18,9 +17,9 @@ class Solution:
         return False
         
     """
-    Complexity : O(n log n)
+    Time : O(n)
     """
-    def containsDuplicate(self, nums: list[int]) -> bool:
+    def withSort(self, nums: list[int]) -> bool:
         
         nums.sort()
         n = len(nums)
@@ -30,9 +29,27 @@ class Solution:
                 return True
 
         return False
+    
+    """
+    Time : O(n)
+    Space : O(n)
+    """
+    def withHashSet (self, nums: list[int]) -> bool:
+
+        hashset = set()
+
+        for n in nums:
+            if n in hashset:
+                return True
+             
+            hashset.add(n)
+
+        return False
 
 
-nums = [1,2,3,4]
+# nums = [1, 2, 3, 4]
+nums = [1, 2, 3, 4, 1]
 sol = Solution()
 
-print(sol.containsDuplicate(nums))
+print(sol.withbruteForce(nums))
+print(sol.withHashSet(nums))
