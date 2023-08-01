@@ -17,6 +17,10 @@ class Solution:
             
         return max_nums
    
+    """
+    Time : O(nlogn)
+    Space : O(n)
+    """
     def withHeap(self, nums: list[int], k: int) -> list[int]:
         map = defaultdict(int)
         res = []
@@ -32,6 +36,29 @@ class Solution:
                 heappop(res)
 
         return [val for count, val in res]
+    
+    """
+    Time : O(n)
+    Space : O(n)
+    """
+    def withBucketSort(self, nums: list[int], k: int) -> list[int]:
+        map = defaultdict(int)
+        freq = [[] for i in range(len(nums)+ 1)]
+
+        for n in nums:
+            map[n] = map[n] + 1
+
+        for v, c in map.items():
+            freq[c].append(v)
+        
+        res = []
+        for i in range(len(freq) - 1, 0, -1):
+            for v in freq[i]:
+                res.append(v)
+
+            if len(res) == k:
+                return res
+
 
 
 nums = [1,1,1,2,2,3]
@@ -40,4 +67,4 @@ k = 2
 # k = 1
 
 sol = Solution()
-print(sol.withHeap(nums, k))
+print(sol.withBucketSort(nums, k))
