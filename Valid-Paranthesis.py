@@ -1,31 +1,22 @@
 class Solution:
     def isValid(self, s: str) -> bool:
         stack = []
-        l_par = "({["
-        r_par = ")}]"
+        map = {
+            ")" : "(", 
+            "}" : "{", 
+            "]" : "["
+        }
 
-        for char in s:
-
-            if char in l_par:
-                stack.append(char)
-
-            elif char in r_par and stack:
-                pos = r_par.index(char)
-                cur_par = stack[-1]
-                if (l_par[pos] == cur_par):
+        for c in s:
+            if c in map:
+                if stack and stack[-1] == map[c] :
                     stack.pop()
-                    continue; 
                 else:
-                    return False;
-
+                    return False 
             else:
-                return False;
-
-        return len(stack)==0;
-
-
-
-
+                stack.append(c)
+            
+        return True if not stack else False
 
 
 
